@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+#s06-root { position:absolute; inset:0; }
+#s06-root .stage { position:absolute; inset:0; }
+
+#s06-root .logo { position:absolute; left:0; right:0; top:420px; text-align:center; font-size:128px; line-height:0.95; }
+#s06-root .sub { position:absolute; left:0; right:0; top:720px; text-align:center; color:var(--muted); font-size:56px; }
+#s06-root .fl { position:absolute; left:290px; top:860px; width:500px; height:130px; border-radius:65px; background:var(--green); color:#0b0e0d;
+  display:flex; align-items:center; justify-content:center; gap:20px; font-size:60px; font-weight:700; }
+#s06-root .fl .ic { width:56px; height:56px; stroke-width:2.4; }
+#s06-root .nx { position:absolute; left:80px; right:80px; top:1090px; text-align:center; font-size:52px; color:var(--text); }
+      </style>
+      <div id="s06-root" data-composition-id="s06" data-width="1080" data-height="1920">
+        <div class="stage">
+
+<h1 class="hd logo">IN<br><span class="g">PERSPECTIVE</span></h1>
+<div class="sub">numbers you can feel</div>
+<div class="fl"><svg class="ic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="M12 5v14" /> </svg> Follow</div>
+<div class="nx">next: <span class="y">how big is a trillion dollars?</span></div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          var R = "#s06-root ";
+          var $ = function (s) { return R + s; };
+          var E = "power3.out", IO = "power2.inOut";
+          var tl = gsap.timeline({ paused: true });
+          function count(sel, from, to, t, d, fmt) {
+            var el = document.querySelector(R + sel);
+            var o = { v: from };
+            var f = fmt || function (v) { return Math.round(v).toLocaleString("en-US"); };
+            tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", onUpdate: function () { el.textContent = f(o.v); } }, t);
+          }
+          function draw(sel, t, d) {
+            tl.fromTo($(sel), { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d || 0.5, ease: "power2.out" }, t);
+          }
+          tl.fromTo($(".stage"), { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.35, ease: E }, 0);
+          var T = function (g) { return g - 16.75; };
+
+tl.fromTo($(".logo"), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: E }, T(16.8));
+tl.fromTo($(".sub"), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: E }, T(17.2));
+tl.fromTo($(".fl"), { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.45, ease: E }, T(16.95));
+tl.fromTo($(".fl"), { scale: 1 }, { scale: 1.05, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, T(18.2));
+tl.fromTo($(".nx"), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: E }, T(18.0));
+
+          tl.to($(".stage"), { opacity: 0, scale: 0.97, duration: 0.5, ease: "power2.in" }, 2.99);
+          window.__timelines["s06"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

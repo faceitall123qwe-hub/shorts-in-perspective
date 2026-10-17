@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+#captions-root { position:absolute; inset:0; }
+#captions-root .stage { position:absolute; inset:0; }
+#captions-root .cc { position:absolute; left:90px; right:150px; top:1400px; text-align:center; opacity:0; }
+#captions-root .cw { display:inline-block; font-size:78px; font-weight:700; letter-spacing:-0.02em; color:#ffffff; padding:4px 10px; border-radius:16px; background:rgba(11,14,13,.82); margin:0 2px; }
+      </style>
+      <div id="captions-root" data-composition-id="captions" data-width="1080" data-height="1920">
+        <div class="stage">
+<div class="cc cc0"><span class="cw w0-0">A</span> <span class="cw w0-1">million</span> <span class="cw w0-2">seconds</span></div>
+<div class="cc cc1"><span class="cw w1-0">is</span> <span class="cw w1-1">about</span> <span class="cw w1-2">eleven</span></div>
+<div class="cc cc2"><span class="cw w2-0">days</span></div>
+<div class="cc cc3"><span class="cw w3-0">A</span> <span class="cw w3-1">billion</span> <span class="cw w3-2">seconds</span></div>
+<div class="cc cc4"><span class="cw w4-0">Almost</span> <span class="cw w4-1">thirty-two</span> <span class="cw w4-2">years</span></div>
+<div class="cc cc5"><span class="cw w5-0">And</span> <span class="cw w5-1">a</span> <span class="cw w5-2">trillion</span></div>
+<div class="cc cc6"><span class="cw w6-0">seconds</span> <span class="cw w6-1">is</span> <span class="cw w6-2">thirty-one</span></div>
+<div class="cc cc7"><span class="cw w7-0">thousand</span></div>
+<div class="cc cc8"><span class="cw w8-0">seven</span> <span class="cw w8-1">hundred</span> <span class="cw w8-2">years</span></div>
+<div class="cc cc9"><span class="cw w9-0">Back</span> <span class="cw w9-1">then</span></div>
+<div class="cc cc10"><span class="cw w10-0">humans</span> <span class="cw w10-1">were</span> <span class="cw w10-2">still</span></div>
+<div class="cc cc11"><span class="cw w11-0">painting</span> <span class="cw w11-1">on</span> <span class="cw w11-2">cave</span></div>
+<div class="cc cc12"><span class="cw w12-0">walls</span></div>
+<div class="cc cc13"><span class="cw w13-0">So</span> <span class="cw w13-1">a</span> <span class="cw w13-2">billion</span></div>
+<div class="cc cc14"><span class="cw w14-0">isn't</span> <span class="cw w14-1">just</span> <span class="cw w14-2">a</span></div>
+<div class="cc cc15"><span class="cw w15-0">bigger</span> <span class="cw w15-1">million</span></div>
+<div class="cc cc16"><span class="cw w16-0">It's</span> <span class="cw w16-1">a</span> <span class="cw w16-2">whole</span></div>
+<div class="cc cc17"><span class="cw w17-0">lifetime</span> <span class="cw w17-1">bigger</span></div>
+<div class="cc cc18"><span class="cw w18-0">Follow</span> <span class="cw w18-1">for</span> <span class="cw w18-2">more</span></div>
+<div class="cc cc19"><span class="cw w19-0">numbers</span> <span class="cw w19-1">put</span> <span class="cw w19-2">in</span></div>
+<div class="cc cc20"><span class="cw w20-0">perspective</span></div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          var R = "#captions-root ";
+          var $ = function (s) { return R + s; };
+          var E = "power3.out", IO = "power2.inOut";
+          var tl = gsap.timeline({ paused: true });
+          function count(sel, from, to, t, d, fmt) {
+            var el = document.querySelector(R + sel);
+            var o = { v: from };
+            var f = fmt || function (v) { return Math.round(v).toLocaleString("en-US"); };
+            tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", onUpdate: function () { el.textContent = f(o.v); } }, t);
+          }
+          function draw(sel, t, d) {
+            tl.fromTo($(sel), { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d || 0.5, ease: "power2.out" }, t);
+          }
+          
+tl.fromTo($(".cc0"), { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: E }, 0.33);
+tl.to($(".w0-0"), { color: "#f5c518", duration: 0.06 }, 0.33);
+tl.to($(".w0-1"), { color: "#f5c518", duration: 0.06 }, 0.39);
+tl.to($(".w0-2"), { color: "#f5c518", duration: 0.06 }, 0.75);
+tl.to($(".cc0"), { opacity: 0, duration: 0.08 }, 1.22);
+tl.fromTo($(".cc1"), { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: E }, 1.30);
+tl.to($(".w1-0"), { color: "#f5c518", duration: 0.06 }, 1.30);
+tl.to($(".w1-1"), { color: "#f5c518", duration: 0.06 }, 1.42);
+tl.to($(".w1-2"), { color: "#f5c518", duration: 0.06 }, 1.67);
+tl.to($(".cc1"), { opacity: 0, duration: 0.08 }, 1.93);
+tl.fromTo($(".cc2"), { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: E }, 2.01);
+tl.to($(".w2-0"), { color: "#f5c518", duration: 0.06 }, 2.01);
+tl.to($(".cc2"), { opacity: 0, duration: 0.08 }, 2.72);
+tl.fromTo($(".cc3"), { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: E }, 2.80);
+tl.to($(".w3-0"), { color: "#f5c518", duration: 0.06 }, 2.80);
+tl.to($(".w3-1"), { color: "#f5c518", duration: 0.06 }, 2.87);
+tl.to($(".w3-2"), { color: "#f5c518", duration: 0.06 }, 3.16);
+tl.to($(".cc3"), { opacity: 0, duration: 0.08 }, 3.99);
+tl.fromTo($(".cc4"), { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: E }, 4.07);
+tl.to($(".w4-0"), { color: "#f5c518", duration: 0.06 }, 4.07);
+tl.to($(".w4-1"), { color: "#f5c518", duration: 0.06 }, 4.41);
+tl.to($(".w4-2"), { color: "#f5c518", duration: 0.06 }, 4.91);
+tl.to($(".cc4"), { opacity: 0, duration: 0.08 }, 5.70);
+tl.fromTo($(".cc5"), { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: E }, 5.78);
+tl.to($(".w5-0"), { color: "#f5c518", duration: 0.06 }, 5.78);
+tl.to($(".w5-1"), { color: "#f5c518", duration: 0.06 }, 5.86);
+tl.to($(".w5-2"), { color: "#f5c518", duration: 0.06 }, 5.92);
+tl.to($(".cc5"), { opacity: 0, duration: 0.08 }, 6.31);
+tl.fromTo($(".cc6"), { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: E }, 6.39);
+tl.to($(".w6-0"), { color: "#f5c518", duration: 0.06 }, 6.39);
+tl.to($(".w6-1"), { color: "#f5c518", duration: 0.06 }, 6.91);
+tl.to($(".w6-2"), { color: "#f5c518", duration: 0.06 }, 7.05);
+tl.to($(".cc6"), { opacity: 0, duration: 0.08 }, 7.48);
+tl.fromTo($(".cc7"), { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: E }, 7.56);
+tl.to($(".w7-0"), { color: "#f5c518", duration: 0.06 }, 7.56);
+tl.to($(".cc7"), { opacity: 0, duration: 0.08 }, 8.22);
+tl.fromTo($(".cc8"), { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: E }, 8.30);
+tl.to($(".w8-0"), { color: "#f5c518", duration: 0.06 }, 8.30);
+tl.to($(".w8-1"), { color: "#f5c518", duration: 0.06 }, 8.56);
+tl.to($(".w8-2"), { color: "#f5c518", duration: 0.06 }, 8.82);
+tl.to($(".cc8"), { opacity: 0, duration: 0.08 }, 9.59);
+tl.fromTo($(".cc9"), { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: E }, 9.67);
+tl.to($(".w9-0"), { color: "#f5c518", duration: 0.06 }, 9.67);
+tl.to($(".w9-1"), { color: "#f5c518", duration: 0.06 }, 9.88);
+tl.to($(".cc9"), { opacity: 0, duration: 0.08 }, 10.42);
+tl.fromTo($(".cc10"), { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: E }, 10.50);
+tl.to($(".w10-0"), { color: "#f5c518", duration: 0.06 }, 10.50);
+tl.to($(".w10-1"), { color: "#f5c518", duration: 0.06 }, 10.79);
+tl.to($(".w10-2"), { color: "#f5c518", duration: 0.06 }, 10.91);
+tl.to($(".cc10"), { opacity: 0, duration: 0.08 }, 11.11);
+tl.fromTo($(".cc11"), { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: E }, 11.19);
+tl.to($(".w11-0"), { color: "#f5c518", duration: 0.06 }, 11.19);
+tl.to($(".w11-1"), { color: "#f5c518", duration: 0.06 }, 11.58);
+tl.to($(".w11-2"), { color: "#f5c518", duration: 0.06 }, 11.71);
+tl.to($(".cc11"), { opacity: 0, duration: 0.08 }, 11.92);
+tl.fromTo($(".cc12"), { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: E }, 12.00);
+tl.to($(".w12-0"), { color: "#f5c518", duration: 0.06 }, 12.00);
+tl.to($(".cc12"), { opacity: 0, duration: 0.08 }, 12.80);
+tl.fromTo($(".cc13"), { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: E }, 12.88);
+tl.to($(".w13-0"), { color: "#f5c518", duration: 0.06 }, 12.88);
+tl.to($(".w13-1"), { color: "#f5c518", duration: 0.06 }, 13.08);
+tl.to($(".w13-2"), { color: "#f5c518", duration: 0.06 }, 13.15);
+tl.to($(".cc13"), { opacity: 0, duration: 0.08 }, 13.55);
+tl.fromTo($(".cc14"), { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: E }, 13.63);
+tl.to($(".w14-0"), { color: "#f5c518", duration: 0.06 }, 13.63);
+tl.to($(".w14-1"), { color: "#f5c518", duration: 0.06 }, 13.92);
+tl.to($(".w14-2"), { color: "#f5c518", duration: 0.06 }, 14.13);
+tl.to($(".cc14"), { opacity: 0, duration: 0.08 }, 14.11);
+tl.fromTo($(".cc15"), { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: E }, 14.19);
+tl.to($(".w15-0"), { color: "#f5c518", duration: 0.06 }, 14.19);
+tl.to($(".w15-1"), { color: "#f5c518", duration: 0.06 }, 14.47);
+tl.to($(".cc15"), { opacity: 0, duration: 0.08 }, 15.15);
+tl.fromTo($(".cc16"), { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: E }, 15.23);
+tl.to($(".w16-0"), { color: "#f5c518", duration: 0.06 }, 15.23);
+tl.to($(".w16-1"), { color: "#f5c518", duration: 0.06 }, 15.33);
+tl.to($(".w16-2"), { color: "#f5c518", duration: 0.06 }, 15.39);
+tl.to($(".cc16"), { opacity: 0, duration: 0.08 }, 15.59);
+tl.fromTo($(".cc17"), { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: E }, 15.67);
+tl.to($(".w17-0"), { color: "#f5c518", duration: 0.06 }, 15.67);
+tl.to($(".w17-1"), { color: "#f5c518", duration: 0.06 }, 16.13);
+tl.to($(".cc17"), { opacity: 0, duration: 0.08 }, 16.87);
+tl.fromTo($(".cc18"), { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: E }, 16.95);
+tl.to($(".w18-0"), { color: "#f5c518", duration: 0.06 }, 16.95);
+tl.to($(".w18-1"), { color: "#f5c518", duration: 0.06 }, 17.16);
+tl.to($(".w18-2"), { color: "#f5c518", duration: 0.06 }, 17.28);
+tl.to($(".cc18"), { opacity: 0, duration: 0.08 }, 17.40);
+tl.fromTo($(".cc19"), { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: E }, 17.48);
+tl.to($(".w19-0"), { color: "#f5c518", duration: 0.06 }, 17.48);
+tl.to($(".w19-1"), { color: "#f5c518", duration: 0.06 }, 18.17);
+tl.to($(".w19-2"), { color: "#f5c518", duration: 0.06 }, 18.32);
+tl.to($(".cc19"), { opacity: 0, duration: 0.08 }, 18.34);
+tl.fromTo($(".cc20"), { opacity: 0, y: 18, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.16, ease: E }, 18.42);
+tl.to($(".w20-0"), { color: "#f5c518", duration: 0.06 }, 18.42);
+tl.to($(".cc20"), { opacity: 0, duration: 0.08 }, 19.56);
+          
+          window.__timelines["captions"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

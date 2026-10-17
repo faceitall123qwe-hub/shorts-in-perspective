@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+#s04-root { position:absolute; inset:0; }
+#s04-root .stage { position:absolute; inset:0; }
+#s04-root .tag { position:absolute; left:0; right:0; top:200px; text-align:center; font-size:44px; color:var(--muted); }
+#s04-root .ttl { position:absolute; left:0; right:0; top:200px; text-align:center; font-size:84px; }
+#s04-root .ground { position:absolute; left:120px; right:120px; top:1250px; height:4px; background:var(--green); }
+#s04-root .gl { position:absolute; left:120px; top:1270px; font-size:48px; color:var(--muted); }
+#s04-root .iss { position:absolute; left:120px; right:120px; top:887px; height:3px; background:repeating-linear-gradient(90deg, var(--yellow) 0 18px, transparent 18px 32px); }
+#s04-root .il { position:absolute; left:120px; top:797px; display:flex; align-items:center; gap:16px; color:var(--yellow); font-size:48px; }
+#s04-root .il .ic { width:64px; height:64px; stroke-width:1.5; }
+#s04-root .col { position:absolute; left:640px; width:160px; top:307px; height:943px; background:rgba(62,224,143,.2); border:3px solid var(--green); border-bottom:none; border-radius:14px 14px 0 0; }
+#s04-root .km { position:absolute; left:200px; top:303px; width:420px; white-space:nowrap; text-align:right; font-size:60px; color:var(--green); }
+#s04-root .x { position:absolute; left:140px; top:594px; font-size:84px; font-weight:700; color:var(--yellow); }
+      </style>
+      <div id="s04-root" data-composition-id="s04" data-width="1080" data-height="1920">
+        <div class="stage">
+
+<h1 class="hd ttl">$1 <span class="g">trillion</span></h1>
+<div class="iss"></div>
+<div class="il"><svg class="ic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="m13.5 6.5-3.148-3.148a1.205 1.205 0 0 0-1.704 0L6.352 5.648a1.205 1.205 0 0 0 0 1.704L9.5 10.5" /> <path d="M16.5 7.5 19 5" /> <path d="m17.5 10.5 3.148 3.148a1.205 1.205 0 0 1 0 1.704l-2.296 2.296a1.205 1.205 0 0 1-1.704 0L13.5 14.5" /> <path d="M9 21a6 6 0 0 0-6-6" /> <path d="M9.352 10.648a1.205 1.205 0 0 0 0 1.704l2.296 2.296a1.205 1.205 0 0 0 1.704 0l4.296-4.296a1.205 1.205 0 0 0 0-1.704l-2.296-2.296a1.205 1.205 0 0 0-1.704 0z" /> </svg> <span>ISS · 420 km</span></div>
+<div class="col"></div>
+<div class="km mono">0 km</div>
+<div class="ground"></div><div class="gl">Earth</div>
+<div class="x mono">×2.6</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          var R = "#s04-root ";
+          var $ = function (s) { return R + s; };
+          var E = "power3.out", IO = "power2.inOut";
+          var tl = gsap.timeline({ paused: true });
+          function count(sel, from, to, t, d, fmt) {
+            var el = document.querySelector(R + sel);
+            var o = { v: from };
+            var f = fmt || function (v) { return Math.round(v).toLocaleString("en-US"); };
+            tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", onUpdate: function () { el.textContent = f(o.v); } }, t);
+          }
+          function draw(sel, t, d) {
+            tl.fromTo($(sel), { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d || 0.5, ease: "power2.out" }, t);
+          }
+          tl.fromTo($(".stage"), { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.35, ease: E }, 0);
+          var T = function (g) { return g - 9.8; };
+
+tl.fromTo($(".ttl"), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: E }, T(9.9));
+tl.fromTo([$(".ground"), $(".gl")], { opacity: 0 }, { opacity: 1, duration: 0.3 }, T(10.0));
+tl.fromTo($(".col"), { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 2.6, ease: "power2.inOut" }, T(10.4));
+tl.fromTo($(".km"), { y: 943 }, { y: 0, duration: 2.6, ease: "power2.inOut" }, T(10.4));
+count(".km", 0, 1092, T(10.4), 2.6, function (v) { return Math.round(v).toLocaleString("en-US") + " km"; });
+tl.fromTo([$(".iss"), $(".il")], { opacity: 0 }, { opacity: 1, duration: 0.4 }, T(13.9));
+tl.fromTo($(".x"), { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.4, ease: E }, T(14.45));
+
+          tl.to($(".stage"), { opacity: 0, scale: 0.97, duration: 0.3, ease: "power2.in" }, 7.10);
+          window.__timelines["s04"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

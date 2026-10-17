@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+#s04-root { position:absolute; inset:0; }
+#s04-root .stage { position:absolute; inset:0; }
+#s04-root .tag { position:absolute; left:0; right:0; top:200px; text-align:center; font-size:44px; color:var(--muted); }
+#s04-root .ago { position:absolute; left:0; right:0; top:360px; text-align:center; font-size:96px; color:var(--yellow); }
+#s04-root .hand { position:absolute; left:340px; top:560px; width:400px; height:400px; color:#d9a24a; }
+#s04-root .hand .ic { width:400px; height:400px; stroke-width:1.1; }
+#s04-root .cap { position:absolute; left:0; right:0; top:1040px; text-align:center; font-size:64px; color:var(--text); font-weight:600; letter-spacing:-0.02em; }
+      </style>
+      <div id="s04-root" data-composition-id="s04" data-width="1080" data-height="1920">
+        <div class="stage">
+<div class="tag mono">IN PERSPECTIVE · #1</div>
+<div class="ago mono">31,700 years ago</div>
+<div class="hand"><svg class="ic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2" /> <path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2" /> <path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8" /> <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" /> </svg> </div>
+<div class="cap">people painted cave walls</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          var R = "#s04-root ";
+          var $ = function (s) { return R + s; };
+          var E = "power3.out", IO = "power2.inOut";
+          var tl = gsap.timeline({ paused: true });
+          function count(sel, from, to, t, d, fmt) {
+            var el = document.querySelector(R + sel);
+            var o = { v: from };
+            var f = fmt || function (v) { return Math.round(v).toLocaleString("en-US"); };
+            tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", onUpdate: function () { el.textContent = f(o.v); } }, t);
+          }
+          function draw(sel, t, d) {
+            tl.fromTo($(sel), { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d || 0.5, ease: "power2.out" }, t);
+          }
+          tl.fromTo($(".stage"), { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.35, ease: E }, 0);
+          var T = function (g) { return g - 9.5; };
+
+tl.fromTo($(".ago"), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: E }, T(9.6));
+tl.fromTo($(".hand"), { opacity: 0, scale: 0.9, rotate: -6 }, { opacity: 1, scale: 1, rotate: 0, duration: 0.7, ease: E }, T(10.6));
+tl.fromTo($(".cap"), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: E }, T(11.4));
+
+          tl.to($(".stage"), { opacity: 0, scale: 0.97, duration: 0.3, ease: "power2.in" }, 2.90);
+          window.__timelines["s04"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

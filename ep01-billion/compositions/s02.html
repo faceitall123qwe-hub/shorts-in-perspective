@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+#s02-root { position:absolute; inset:0; }
+#s02-root .stage { position:absolute; inset:0; }
+#s02-root .tag { position:absolute; left:0; right:0; top:200px; text-align:center; font-size:44px; color:var(--muted); }
+#s02-root .num { position:absolute; left:0; right:0; text-align:center; color:var(--text); }
+#s02-root .unit { position:absolute; left:0; right:0; text-align:center; color:var(--muted); font-size:64px; }
+#s02-root .res { position:absolute; left:0; right:0; display:flex; justify-content:center; align-items:center; gap:28px; color:var(--yellow); }
+#s02-root .res .v { font-size:124px; font-weight:700; letter-spacing:-0.04em; }
+#s02-root .res .ic { width:110px; height:110px; stroke-width:1.6; }
+
+#s02-root .n2 { top:480px; font-size:110px; } #s02-root .u2 { top:650px; } #s02-root .r2 { top:800px; }
+#s02-root .life { position:absolute; left:110px; right:110px; top:1080px; }
+#s02-root .life .lb { color:var(--muted); font-size:48px; margin-bottom:22px; display:flex; justify-content:space-between; }
+#s02-root .bar { height:44px; border-radius:22px; background:var(--line); overflow:hidden; }
+#s02-root .bar i { display:block; width:40%; height:100%; background:var(--green); border-radius:22px; }
+      </style>
+      <div id="s02-root" data-composition-id="s02" data-width="1080" data-height="1920">
+        <div class="stage">
+<div class="tag mono">IN PERSPECTIVE · #1</div>
+<div class="num mono n2">0</div><div class="unit u2">seconds</div>
+<div class="res r2"><svg class="ic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 22h14" /> <path d="M5 2h14" /> <path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22" /> <path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2" /> </svg> <span class="v">≈ 32 years</span></div>
+<div class="life"><div class="lb"><span>a human life</span><span class="mono">80 yrs</span></div><div class="bar"><i></i></div></div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          var R = "#s02-root ";
+          var $ = function (s) { return R + s; };
+          var E = "power3.out", IO = "power2.inOut";
+          var tl = gsap.timeline({ paused: true });
+          function count(sel, from, to, t, d, fmt) {
+            var el = document.querySelector(R + sel);
+            var o = { v: from };
+            var f = fmt || function (v) { return Math.round(v).toLocaleString("en-US"); };
+            tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", onUpdate: function () { el.textContent = f(o.v); } }, t);
+          }
+          function draw(sel, t, d) {
+            tl.fromTo($(sel), { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d || 0.5, ease: "power2.out" }, t);
+          }
+          tl.fromTo($(".stage"), { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.35, ease: E }, 0);
+          var T = function (g) { return g - 2.7; };
+
+count(".n2", 0, 1000000000, T(2.75), 0.9);
+tl.fromTo($(".u2"), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: E }, T(3.0));
+tl.fromTo($(".r2"), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: E }, T(4.3));
+tl.fromTo($(".life"), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: E }, T(4.6));
+tl.fromTo($(".bar i"), { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.8, ease: "power2.out" }, T(4.75));
+
+          tl.to($(".stage"), { opacity: 0, scale: 0.97, duration: 0.3, ease: "power2.in" }, 2.60);
+          window.__timelines["s02"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

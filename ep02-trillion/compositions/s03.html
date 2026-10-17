@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+#s03-root { position:absolute; inset:0; }
+#s03-root .stage { position:absolute; inset:0; }
+#s03-root .tag { position:absolute; left:0; right:0; top:200px; text-align:center; font-size:44px; color:var(--muted); }
+#s03-root .ttl { position:absolute; left:0; right:0; top:330px; text-align:center; font-size:96px; }
+#s03-root .ground { position:absolute; left:120px; right:120px; top:1250px; height:4px; background:var(--line); }
+#s03-root .bar { position:absolute; bottom:670px; width:220px; border-radius:16px 16px 0 0; }
+#s03-root .bk { left:250px; height:485px; background:var(--line); border:3px solid #4a5751; border-bottom:none; }
+#s03-root .bs { left:610px; height:640px; background:rgba(62,224,143,.18); border:3px solid var(--green); border-bottom:none; }
+#s03-root .v { position:absolute; width:300px; text-align:center; font-size:56px; }
+#s03-root .vk { left:210px; top:685px; color:var(--muted); } #s03-root .vs { left:570px; top:530px; color:var(--green); }
+#s03-root .n { position:absolute; top:1270px; width:300px; text-align:center; font-size:48px; }
+#s03-root .nk { left:210px; color:var(--muted); } #s03-root .ns { left:570px; color:var(--text); }
+      </style>
+      <div id="s03-root" data-composition-id="s03" data-width="1080" data-height="1920">
+        <div class="stage">
+<div class="tag mono">IN PERSPECTIVE · #2</div>
+<h1 class="hd ttl">$1 <span class="g">billion</span></h1>
+<div class="bar bk"></div><div class="bar bs"></div><div class="ground"></div>
+<div class="v vk mono">828 m</div><div class="v vs mono">1,092 m</div>
+<div class="n nk">Burj Khalifa</div><div class="n ns">the stack</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          var R = "#s03-root ";
+          var $ = function (s) { return R + s; };
+          var E = "power3.out", IO = "power2.inOut";
+          var tl = gsap.timeline({ paused: true });
+          function count(sel, from, to, t, d, fmt) {
+            var el = document.querySelector(R + sel);
+            var o = { v: from };
+            var f = fmt || function (v) { return Math.round(v).toLocaleString("en-US"); };
+            tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", onUpdate: function () { el.textContent = f(o.v); } }, t);
+          }
+          function draw(sel, t, d) {
+            tl.fromTo($(sel), { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d || 0.5, ease: "power2.out" }, t);
+          }
+          tl.fromTo($(".stage"), { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.35, ease: E }, 0);
+          var T = function (g) { return g - 6.2; };
+
+tl.fromTo($(".ttl"), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: E }, T(6.3));
+tl.fromTo($(".bs"), { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 1.0, ease: E }, T(6.9));
+tl.fromTo([$(".vs"), $(".ns")], { opacity: 0 }, { opacity: 1, duration: 0.3 }, T(7.4));
+tl.fromTo([$(".ground")], { opacity: 0 }, { opacity: 1, duration: 0.3 }, T(6.9));
+tl.fromTo($(".bk"), { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.8, ease: E }, T(8.3));
+tl.fromTo([$(".vk"), $(".nk")], { opacity: 0 }, { opacity: 1, duration: 0.3 }, T(8.8));
+
+          tl.to($(".stage"), { opacity: 0, scale: 0.97, duration: 0.3, ease: "power2.in" }, 3.30);
+          window.__timelines["s03"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

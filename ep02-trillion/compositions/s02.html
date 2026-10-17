@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+#s02-root { position:absolute; inset:0; }
+#s02-root .stage { position:absolute; inset:0; }
+#s02-root .tag { position:absolute; left:0; right:0; top:200px; text-align:center; font-size:44px; color:var(--muted); }
+#s02-root .ttl { position:absolute; left:0; right:0; top:330px; text-align:center; font-size:96px; }
+#s02-root .sub { position:absolute; left:0; right:0; top:450px; text-align:center; font-size:52px; color:var(--muted); }
+#s02-root .ground { position:absolute; left:120px; right:120px; top:1250px; height:4px; background:var(--line); }
+#s02-root .person { position:absolute; left:250px; top:650px; width:240px; height:600px; border-radius:14px 14px 0 0; background:var(--line); border:3px solid #4a5751; border-bottom:none;
+  display:flex; align-items:flex-start; justify-content:center; padding-top:30px; color:var(--muted); }
+#s02-root .person .ic { width:110px; height:110px; stroke-width:1.5; }
+#s02-root .stack { position:absolute; left:600px; top:886px; width:240px; height:364px; border-radius:14px 14px 0 0; background:rgba(62,224,143,.18); border:3px solid var(--green); border-bottom:none;
+  display:flex; align-items:center; justify-content:center; color:var(--green); }
+#s02-root .stack .ic { width:110px; height:110px; stroke-width:1.5; }
+#s02-root .h1 { position:absolute; left:560px; top:800px; width:320px; text-align:center; font-size:60px; color:var(--yellow); }
+#s02-root .hp { position:absolute; left:220px; top:1270px; width:300px; text-align:center; font-size:48px; color:var(--muted); }
+#s02-root .hs { position:absolute; left:560px; top:1270px; width:320px; text-align:center; font-size:48px; color:var(--green); }
+      </style>
+      <div id="s02-root" data-composition-id="s02" data-width="1080" data-height="1920">
+        <div class="stage">
+<div class="tag mono">IN PERSPECTIVE · #2</div>
+<h1 class="hd ttl">$1 <span class="g">million</span></h1>
+<div class="sub mono">10,000 × $100 bills</div>
+<div class="person"><svg class="ic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /> <circle cx="12" cy="7" r="4" /> </svg> </div>
+<div class="stack"><svg class="ic " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <rect width="20" height="12" x="2" y="6" rx="2" /> <circle cx="12" cy="12" r="2" /> <path d="M6 12h.01M18 12h.01" /> </svg> </div>
+<div class="ground"></div>
+<div class="h1 mono">≈ 1.1 m</div>
+<div class="hp">you · 1.8 m</div><div class="hs">the stack</div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          var R = "#s02-root ";
+          var $ = function (s) { return R + s; };
+          var E = "power3.out", IO = "power2.inOut";
+          var tl = gsap.timeline({ paused: true });
+          function count(sel, from, to, t, d, fmt) {
+            var el = document.querySelector(R + sel);
+            var o = { v: from };
+            var f = fmt || function (v) { return Math.round(v).toLocaleString("en-US"); };
+            tl.fromTo(o, { v: from }, { v: to, duration: d, ease: "power2.out", onUpdate: function () { el.textContent = f(o.v); } }, t);
+          }
+          function draw(sel, t, d) {
+            tl.fromTo($(sel), { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: d || 0.5, ease: "power2.out" }, t);
+          }
+          tl.fromTo($(".stage"), { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.35, ease: E }, 0);
+          var T = function (g) { return g - 2.2; };
+
+tl.fromTo($(".ttl"), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: E }, T(2.3));
+tl.fromTo($(".sub"), { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: E }, T(3.2));
+tl.fromTo([$(".ground"), $(".person"), $(".hp")], { opacity: 0 }, { opacity: 1, duration: 0.4 }, T(3.4));
+tl.fromTo($(".stack"), { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.9, ease: E }, T(4.4));
+tl.fromTo($(".hs"), { opacity: 0 }, { opacity: 1, duration: 0.3 }, T(4.5));
+tl.fromTo($(".h1"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: E }, T(5.3));
+
+          tl.to($(".stage"), { opacity: 0, scale: 0.97, duration: 0.3, ease: "power2.in" }, 3.70);
+          window.__timelines["s02"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>
